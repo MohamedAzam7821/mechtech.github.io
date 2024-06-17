@@ -88,7 +88,14 @@
 
     .login-button:hover,
     .register-button:hover {
-      background-color: #ff6600;
+      background-color: #ffffff;
+
+    }
+
+    /* Fix for disappearing text on hover */
+    .login-button:hover span, 
+    .register-button:hover span {
+      display: block; 
     }
 
     .hero {
@@ -196,6 +203,7 @@
       overflow: hidden;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
     }
 
     .product-item:hover {
@@ -215,6 +223,8 @@
       color: #fff;
       margin: 15px 20px 5px 20px;
       font-size: 1.3em;
+      position: relative; 
+      z-index: 2; 
     }
 
     .product-item p {
@@ -246,12 +256,42 @@
       text-align: center;
     }
 
-    /* Responsive Design for Categories */
     @media (max-width: 768px) {
       .categories li {
         flex: 1 0 100px;
         margin-bottom: 10px;
       }
+    }
+
+    .image-thumbnails {
+      display: flex;
+      justify-content: flex-start;
+      gap: 5px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .image-thumbnail {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0.7; 
+      transition: opacity 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .image-thumbnail.active {
+      opacity: 1; 
+      box-shadow: 0 0 0 3px #ff6600; 
+    }
+
+    .image-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -400,21 +440,34 @@
   const productsData = [
     {
       "name": "Futuristic Cityscape",
-      "image": "https://ideogram.ai/assets/image/lossless/response/NARM-rjLTWGYK4uI02zShw",
+      "images": [
+        "https://ideogram.ai/assets/image/lossless/response/NARM-rjLTWGYK4uI02zShw",
+        "https://ideogram.ai/assets/image/lossless/response/Gvjrq8x3R_GzWSpBqCTOLA",
+        "https://ideogram.ai/assets/progressive-image/balanced/response/fbEqk9tvRoiWOXycm85-9Q",
+      ],
       "price": "49.99",
       "paymentUrl": "https://www.example.com/payment/cityscape",
       "description": "A highly detailed 3D model of a futuristic cityscape, perfect for sci-fi games, films, or architectural visualizations."
     },
     {
       "name": "Human Anatomy Model",
-      "image": "https://ideogram.ai/assets/image/lossless/response/qlsEcdbJTxqEKJgKb3NUVA",
+      "images": [
+        "https://ideogram.ai/assets/image/lossless/response/qlsEcdbJTxqEKJgKb3NUVA",
+        "https://ideogram.ai/assets/image/lossless/response/T3xhdWY6QWyN8WEnQk3rSg",
+        "https://ideogram.ai/assets/progressive-image/balanced/response/jjUtMKl6RUK00n1KwFKynw",
+        "https://ideogram.ai/assets/progressive-image/balanced/response/IZ-ugBN2T1Ko1K2U31Pq-A",
+        "https://ideogram.ai/assets/progressive-image/balanced/response/lrVcBi7GQYiwng2khdU6vg"
+      ],
       "price": "29.99",
       "paymentUrl": "https://www.example.com/payment/anatomy",
       "description": "An accurate and detailed anatomical model of the human body, ideal for medical illustrations, educational purposes, or scientific presentations."
     },
     {
       "name": "Running Anatomy",
-      "image": "https://ideogram.ai/assets/image/lossless/response/YcJfKIquQh2KNLuTnvPEgw",
+      "images": [
+        "https://ideogram.ai/assets/image/lossless/response/YcJfKIquQh2KNLuTnvPEgw",
+        "https://ideogram.ai/assets/progressive-image/balanced/response/fJ7ie_XjRouwnFnhoBZiHw"
+      ],
       "price": "34.99",
       "paymentUrl": "https://www.example.com/payment/running",
       "description": "A dynamic 3D model capturing the anatomy of a human in motion, suitable for sports science projects, animation, or medical reference."
@@ -432,29 +485,54 @@
       productItem.classList.add('product-item');
 
       const img = document.createElement('img');
-      img.src = product.image;
+      img.src = product.images[0]; 
       img.alt = product.name;
+      img.id = `productImage-${product.name}`; 
 
+      const imageThumbnails = document.createElement('div');
+      imageThumbnails.classList.add('image-thumbnails');
+      product.images.forEach((image, index) => {
+        const thumbnail = document.createElement('div');
+        thumbnail.classList.add('image-thumbnail');
+        if (index === 0) { 
+          thumbnail.classList.add('active');
+        }
+
+        const thumbnailImg = document.createElement('img');
+        thumbnailImg.src = image;
+        thumbnailImg.alt = `Thumbnail ${index + 1}`;
+
+        thumbnailImg.addEventListener('click', () => {
+          const allThumbnails = productItem.querySelectorAll('.image-thumbnail');
+          allThumbnails.forEach(thumb => thumb.classList.remove('active'));
+
+          thumbnail.classList.add('active');
+
+          const mainImage = document.getElementById(`productImage-${product.name}`);
+          mainImage.src = image;
+        });
+
+        thumbnail.appendChild(thumbnailImg);
+        imageThumbnails.appendChild(thumbnail);
+      });
+
+      productItem.appendChild(img);
+      productItem.appendChild(imageThumbnails);
       const productName = document.createElement('h3');
       productName.textContent = product.name;
-
+      productItem.appendChild(productName);
       const productPrice = document.createElement('p');
       productPrice.textContent = `$${product.price}`;
-
+      productItem.appendChild(productPrice);
       const productDescription = document.createElement('p');
       productDescription.textContent = product.description;
-
+      productItem.appendChild(productDescription);
       const buyNowButton = document.createElement('button');
       buyNowButton.textContent = 'Buy Now';
       buyNowButton.classList.add('buy-now-button');
       buyNowButton.addEventListener('click', () => {
         window.location.href = product.paymentUrl;
       });
-
-      productItem.appendChild(img);
-      productItem.appendChild(productName);
-      productItem.appendChild(productPrice);
-      productItem.appendChild(productDescription);
       productItem.appendChild(buyNowButton);
       productGrid.appendChild(productItem);
     });
