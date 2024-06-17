@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Models for Every Project - TurboSquid</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #222;
+            color: #fff;
+        }
+
+        header {
+            background-color: #111;
+            padding: 20px 0;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .logo {
+            float: left;
+        }
+
+        nav {
+            float: right;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff6600;
+        }
+
+        .hero {
+            background: url('https://turbosquid.com/assets/mesh-section-bg-148c87f8ca664a1120c0c07922f84390250597c4248d416e41ab17e74210b50f.jpg') no-repeat center center;
+            background-size: cover;
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .categories {
+            background-color: #333;
+            padding: 30px 0;
+        }
+
+        .categories h2 {
+            color: #ff6600;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        .categories ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .categories li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background-color: #444;
+            transition: background-color 0.3s ease;
+            display: block;
+            text-align: center;
+        }
+
+        .categories li a:hover {
+            background-color: hsl(
+                Math.random() * 360,
+                80%, 
+                60%            );
+        }
+
+        .products {
+            padding: 40px 0;
+        }
+
+        .products h2 {
+            color: #ff6600;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-gap: 30px;
+        }
+
+        .product-item {
+            background-color: #444;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .product-item h3 {
+            color: #fff;
+            margin: 15px 20px 5px 20px;
+            font-size: 1.3em;
+        }
+
+        .product-item p {
+            color: #ddd;
+            margin: 0 20px 15px 20px;
+        }
+
+        footer {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="https://iili.io/d9S8QyJ.png" alt="Mech Tech" height="40"><a>Mech Tech</a>
+            </div>
+            <nav>
+                <a href="#">3D Models</a>
+                <a href="#">PixelSquid</a>
+                <a href="#">AI 3D Generator</a>
+                <a href="#">Log In</a>
+                <a href="#">Join</a>
+                <a href="#">
+                    <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart Icon" height="20">
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>3D Models for Every Project</h1>
+            <p>3D models for VFX studios, game developers, architects, ad agencies, VR/AR projects, and more. Files available for download in all major formats - max, fbx, obj, c4d, maya.<br>Industry-leading 24/7 support and simple returns.</p>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="container">
+            <h2>Top 3D Model Categories</h2>
+            <ul>
+                <li><a href="#">Airplane</a></li>
+                <li><a href="#">Anatomy</a></li>
+                <li><a href="#">Animal</a></li>
+                <li><a href="#">Architecture</a></li>
+                <li><a href="#">Car</a></li>
+                <li><a href="#">Character</a></li>
+                <li><a href="#">Food & Drink</a></li>
+                <li><a href="#">Furnishings</a></li>
+                <li><a href="#">Industrial</a></li>
+                <li><a href="#">Interior Design</a></li>
+                <li><a href="#">Man</a></li>
+                <li><a href="#">Nature</a></li>
+                <li><a href="#">Office</a></li>
+                <li><a href="#">People</a></li>
+                <li><a href="#">Plants</a></li>
+                <li><a href="#">Robot</a></li>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Trees</a></li>
+                <li><a href="#">Vehicles</a></li>
+                <li><a href="#">Woman</a></li>
+                <li><a href="#">Free 3D Models</a></li>
+                <li><a href="#">3ds Max Models</a></li>
+                <li><a href="#">Maya Models</a></li>
+                <li><a href="#">Cinema 4D Models</a></li>
+                <li><a href="#">Blender Models</a></li>
+                <li><a href="#">Low Poly Models</a></li>
+                <li><a href="#">Animated Models</a></li>
+                <li><a href="#">Rigged Models</a></li>
+                <li><a href="#">Obj Models</a></li>
+                <li><a href="#">FBX Models</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="container">
+            <h2>All Products</h2>
+            <div class="product-grid" id="productGrid">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 TurboSquid. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const productsData = [
+            {
+                "name": "Futuristic Cityscape",
+                "image": "https://ideogram.ai/assets/image/lossless/response/NARM-rjLTWGYK4uI02zShw",
+                "price": "49.99"
+            },
+            {
+                "name": "Human Anatomy Model",
+                "image": "https://ideogram.ai/assets/image/lossless/response/qlsEcdbJTxqEKJgKb3NUVA",
+                "price": "29.99"
+            },
+            {
+                "name": "Running Anatomy",
+                "image": "https://ideogram.ai/assets/image/lossless/response/YcJfKIquQh2KNLuTnvPEgw",
+                "price": "34.99"
+            }
+        ];
+
+        const productGrid = document.getElementById('productGrid');
+
+        function loadProducts() {
+            productsData.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.classList.add('product-item');
+
+                const img = document.createElement('img');
+                img.src = product.image;
+                img.alt = product.name;
+
+                const productName = document.createElement('h3');
+                productName.textContent = product.name;
+
+                const productPrice = document.createElement('p');
+                productPrice.textContent = `$${product.price}`;
+
+                productItem.appendChild(img);
+                productItem.appendChild(productName);
+                productItem.appendChild(productPrice);
+
+                productGrid.appendChild(productItem);
+            });
+        }
+
+        loadProducts();
+    </script>
+</body>
+</html>
